@@ -1,18 +1,33 @@
 import React from "react";
-import AudioPlayer from "react-h5-audio-player";
+import AudioPlayer, { RHAP_UI } from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
 import { Songs } from "../Context";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 export default function Playing() {
-	const { song, handleSetSong } = useContext(Songs);
+	const { song, handleSetSong, numOfSongs } = useContext(Songs);
+	const [isShuffle, setIsShuffle] = useState(false);
+
+	const shuffleIconClass = "fa-solid fa-shuffle";
+
+	const shuffleClass = `text-[#868686] text-xl hover:cursor-pointer ml-5 ${
+		isShuffle ? "" : "shuffleInactive"
+	}`;
 
 	const handleClickNext = () => {
-		handleSetSong(song.id + 1);
+		if (!isShuffle) handleSetSong(song.id + 1);
+		else {
+			const random = Math.floor(Math.random() * (numOfSongs - 0 + 1)) + 0;
+			handleSetSong(random);
+		}
 	};
 
 	const handleClickPrev = () => {
 		handleSetSong(song.id - 1);
+	};
+
+	const handleShuffle = () => {
+		setIsShuffle(!isShuffle);
 	};
 
 	return (
@@ -25,8 +40,14 @@ export default function Playing() {
 				showJumpControls={false}
 				onClickNext={handleClickNext}
 				onClickPrev={handleClickPrev}
-				autoPlay={true}
 				autoPlayAfterSrcChange={true}
+				onEnded={handleClickNext}
+				customAdditionalControls={[
+					RHAP_UI.LOOP,
+					<span className={shuffleClass} onClick={handleShuffle}>
+						<i className={shuffleIconClass}></i>
+					</span>,
+				]}
 			/>
 		</div>
 	);

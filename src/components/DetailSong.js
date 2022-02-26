@@ -26,7 +26,7 @@ export default function DetailSong() {
 				<span className="text-xl text-white">{song.author}</span>
 			</div>
 			<span className="mt-auto text-white text-center">
-				Made with <i class="fa-solid fa-heart text-red-500 "></i>
+				Made with <i className="fa-solid fa-heart text-red-500 "></i>
 			</span>
 		</div>
 	);

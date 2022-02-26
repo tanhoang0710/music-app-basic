@@ -9,6 +9,7 @@ import { useState } from "react";
 
 function App() {
 	const [song, setSong] = useState(DataSongs[0]);
+	const numOfSongs = DataSongs.length;
 
 	const handleSetSong = (idSong) => {
 		const song = DataSongs.find((song) => song.id === idSong);
@@ -18,7 +19,9 @@ function App() {
 
 	return (
 		<div className="App">
-			<Songs.Provider value={{ DataSongs, song, handleSetSong }}>
+			<Songs.Provider
+				value={{ DataSongs, song, handleSetSong, numOfSongs }}
+			>
 				<Navbar />
 				<div className="grid grid-cols-3 bg-slate-700 h-screen-navbar-player overflow-hidden">
 					<DetailSong />

@@ -30,3 +30,24 @@
 ::-webkit-scrollbar-thumb:hover {
 	background: #555;
 }
+
+.shuffleInactive {
+	position: relative;
+	transition: all 0.2s linear;
+}
+
+.shuffleInactive::before {
+	content: "";
+	position: absolute;
+	top: 1px;
+	left: 0;
+	width: 150%;
+	height: 3px;
+	background: linear-gradient(
+		to top,
+		rgba(134, 134, 134, 1) 50%,
+		#0f172ac2 50%
+	);
+	transform: rotate(45deg);
+	transform-origin: left;
+}
