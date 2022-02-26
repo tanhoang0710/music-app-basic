@@ -25,6 +25,8 @@ export default function Playing() {
 				showJumpControls={false}
 				onClickNext={handleClickNext}
 				onClickPrev={handleClickPrev}
+				autoPlay={true}
+				autoPlayAfterSrcChange={true}
 			/>
 		</div>
 	);
