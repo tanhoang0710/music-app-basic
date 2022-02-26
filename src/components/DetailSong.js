@@ -28,6 +28,9 @@ export default function DetailSong() {
 			<span className="mt-auto text-white text-center">
 				Made with <i className="fa-solid fa-heart text-red-500 "></i>
 			</span>
+			<span className="mt-auto text-white text-center">
+				vào tim từ lâu rồi^^
+			</span>
 		</div>
 	);
 }
